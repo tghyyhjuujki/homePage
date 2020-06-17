@@ -35,6 +35,8 @@ public class BoardEntity {
 	private String storeImage2;
 	private String storeImage3;
 	private String storeImage4;
+	private String storeImage5;
+	private String storeImage6;
 	private String store_open_time;
 	private String store_end_time;
 	private String store_coupon;
