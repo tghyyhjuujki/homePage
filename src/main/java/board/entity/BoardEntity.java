@@ -38,6 +38,8 @@ public class BoardEntity {
 	private String store_open_time;
 	private String store_end_time;
 	private String store_coupon;
+	private String store_seat;
+	private String store_place;
 
 	// 초기값을 설정 ==> 특정 DB에 의존하지 않도록 하기 위해
 	private LocalDateTime createdDatetime = LocalDateTime.now();
