@@ -19,7 +19,7 @@ public class BookTable {
 	@GeneratedValue(strategy = GenerationType.AUTO) // 데이터베이스에서 제공하는 기본키 생성 전략을 따름
 	private int id;
 	
-	private String book_date;
+	private String bookDate;
 	private String book_time;
 	private String book_num_of_people;
 	private String user_name;
