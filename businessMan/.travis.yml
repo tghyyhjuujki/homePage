@@ -1,0 +1,35 @@
+language: java
+jdk: 
+    - openjdk8
+branches:
+    only:
+        - master
+     
+cache:
+    directories:
+        - '$HOME/.m2/repository'
+        - '$HOME/.gradle'
+before_install:
+    - chmod +x ./gradlew 
+script: "./gradlew clean build"
+
+before_deploy:
+    # 현재 위치의 모든 파일을 springboot-webservice 이름으로 압축
+    - zip -r springboot-webservice_8080 *
+    # Travis CI 실행되는 위치에 deploy 디렉터리를 생성 
+    - mkdir -p deploy
+    # 압축 파일을 deploy 디렉터리로 이동
+    - mv springboot-webservice.zip_8080 deploy/springboot-webservice_8080.zip
+
+deploy:
+    - provider: s3
+      access_key_id: $AWS_ACCESS_KEY
+      secret_access_key: $ACCESS_SECRET_KEY
+      bucket: springboot-for-project   # S3 버킷
+      region: ap-northeast-2             # S3 버킷 리전
+      skip_cleanup: true
+      acl: private
+      local_dir: deploy
+      wait-until-deployed: true
+
+
